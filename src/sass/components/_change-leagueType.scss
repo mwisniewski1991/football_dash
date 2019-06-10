@@ -1,0 +1,26 @@
+.changeLeague-type {
+    position: absolute;
+    right: 4%;
+    top: 50%;
+    transform: translate(0%, -50%);
+    font-size: 1.7rem;
+    color: $color-black;
+
+    &__button {
+        display: inline-block;
+
+        &:not(:last-child) {
+            margin-right: .5rem;
+        }
+
+        &:hover {
+            cursor: pointer;
+            color: $color-main-one;
+        }
+
+        &--clicked {
+            color: $color-main-one;
+            font-size: 2rem;
+        }
+    }
+}

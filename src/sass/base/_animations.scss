@@ -1,0 +1,14 @@
+//ANIMATION FOR NAV BUTTON
+@keyframes pulsar {
+    0% {
+      opacity: 1;
+      transform: scaleX(1) scaleY(1) skew(0) rotate(0);
+      // border-radius: 50%;
+    }
+    
+    100% {
+      opacity: 0;
+      transform: scaleX(2) scaleY(1.2) skew(30deg) rotate(360deg);
+      // border-radius: 0%;
+    }
+};

@@ -1,0 +1,43 @@
+body {
+    font-family: 'K2D', sans-serif;
+    padding: 1rem;
+    background-color: rgba($color-main-one, 0.3);
+}
+
+.heading-one {
+    text-transform: uppercase;
+    letter-spacing: 2rem;
+    font-size: 6rem;
+    font-weight: 700;
+
+    //FIRST OPTION
+    color: $color-main-one;
+    text-shadow: 3px 3px 3px $color-black;
+
+    //SECOND OPTION
+    // background-image: linear-gradient(to right bottom, $color-main-one 50%, $color-main-three);
+    // -webkit-background-clip: text;
+    // color: transparent;
+}
+
+.heading-two {
+    text-transform: uppercase;
+    letter-spacing: 1rem;
+    font-size: 4rem;
+
+    color: $color-main-one;
+    text-shadow: 2px 2px 2px $color-black;
+}
+
+.heading-three {
+    text-transform: uppercase;
+    letter-spacing: .5 rem;
+    font-size: 2rem;
+    color: $color-main-one;
+    text-shadow: 1px 1px 1px $color-black;
+}
+
+
+a {
+    text-decoration: none;
+}

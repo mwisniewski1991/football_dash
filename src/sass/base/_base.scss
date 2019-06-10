@@ -1,0 +1,39 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html{
+    // This defines what 1rem is
+    font-size: 62.5%;
+
+
+    @include respond(tab-port){
+        font-size: 44%; //1rem = 7px; 7px/16px = 44%
+    }
+
+    @include respond(phone){
+        font-size: 44%; //1rem = 7px; 7px/16px = 44%
+    }
+}
+
+
+body {
+    box-sizing: border-box;
+}
+
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }

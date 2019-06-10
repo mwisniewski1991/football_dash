@@ -1,0 +1,11 @@
+.icon {
+    font-size: 5rem;
+
+   &__for {
+        color: $color-main-three;
+   }
+
+   &__against {
+        color: $color-red;
+   }
+}
