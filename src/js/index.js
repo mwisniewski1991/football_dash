@@ -1,8 +1,12 @@
 import League from './models/League';
-import * as leagueView from './views/leagueView'; 
-import * as chartsView from './views/chartsView'; 
-import * as chartsData from './views/chartsData'; 
-import { elements } from './views/base';
+import * as leagueView from './views/leagueView';
+import * as chartsView from './views/chartsView';
+import * as chartsData from './views/chartsData';
+import {
+    elements
+} from './views/base';
+
+// import './../sass/main.scss';
 
 //GLOBAL STATE OF THE APP
 //currentComp, tableTotal, tableHome, tableAway, scorers
@@ -10,16 +14,15 @@ const state = {};
 
 
 //API CONTROLLER
-const controlSearch =  async (e) =>{
+const controlSearch = async (e) => {
 
     //1. GET ID LEAGUE - ON LOAD 2021 - PREMIER LEAGUE
     let leagueId;
     const selectButtons = elements.selectButtons;
 
-    if(e){
+    if (e) {
         leagueId = e.target.id;
-    }
-    else{
+    } else {
         leagueId = '2021'
     }
 
@@ -29,8 +32,11 @@ const controlSearch =  async (e) =>{
     state.league = new League(leagueId);
     // state.league = new League('2021');
 
+    //change current type in state - default 'Total'
+    state.league.currentType = 'Total';
 
-    try{
+
+    try {
         //3. SEARCH FOR LEAGUE
         await state.league.getTables();
         await state.league.getScorers();
@@ -46,12 +52,12 @@ const controlSearch =  async (e) =>{
 
         //6. RENDER CHARTS
         //goals diffrences
-        const chartGoalDiffData = chartsData.formatTableDataForChart(state.league.tableTotal, "goalDifference");
+        const chartGoalDiffData = chartsData.formatTableDataForChart(state.league.tableTotal);
         chartsView.createChartGoalDiff(chartGoalDiffData);
 
         //goals for best
         {
-            const chartGoalData = chartsData.formatDataForChartForAgainst(state.league, "goalsForBest",1 , 10);
+            const chartGoalData = chartsData.formatDataForChartForAgainst(state.league, "goalsForBest", 1, 10);
             // console.log(chartGoalData);
             chartsView.creatChartGoal(chartGoalData, "goalsForBest");
         }
@@ -77,8 +83,7 @@ const controlSearch =  async (e) =>{
 
 
 
-    }
-    catch(error){
+    } catch (error) {
         console.log(error);
     }
 };
@@ -102,12 +107,35 @@ const changeLeagueKind = (e) => {
     //4. render new table and udpate chart
     let type = e.target.id.charAt(0).toUpperCase() + e.target.id.slice(1) //change first letter to uppercase. necessery for next step
 
+    //change current type in state
+    state.league.currentType = type;
+
     //create league table
     leagueView.createTable(state.league[`table${type}`]);
-    
+
+    //get value from input to update chart
+    let start = elements.chartDiffButtonsLow.value;
+    let end = elements.chartDiffButtonsHigh.value;
+
     //create golas diff chart
-    let chartGoalDiffData = chartsData.formatTableDataForChart(state.league[`table${type}`]);
+    let chartGoalDiffData = chartsData.formatTableDataForChart(state.league[`table${type}`], start, end);
     chartsView.createChartGoalDiff(chartGoalDiffData);
+};
+
+//CHANGE CHART DIFF
+const chartDiffUpdate = () => {
+
+    //1. GET VALUE FROM INPUTS 
+    let start = elements.chartDiffButtonsLow.value;
+    let end = elements.chartDiffButtonsHigh.value;
+
+    //2. CHECK WHAT IS CURRENT LEAGUE TYPE
+    // console.log(`START: ${start} END: ${end}`);
+    const type = state.league.currentType;
+
+    //3. FORMAT DATA AND RENDER CAHRT
+    const chartGoalDiffData = chartsData.formatTableDataForChart(state.league[`table${type}`], start, end);
+    chartsView.createChartGoalDiff(chartGoalDiffData);   
 };
 
 
@@ -122,6 +150,12 @@ Array.from(elements.selectButtons).forEach(el => {
 })
 
 
+//LISTENER TO CHART DIFF INPUT
+Array.from(elements.chartDiffButtons).forEach(el => {
+    el.addEventListener('change', chartDiffUpdate)
+});
+
+
 //START ON LOAD
 controlSearch();
-console.log(state.league);
+console.log(state);

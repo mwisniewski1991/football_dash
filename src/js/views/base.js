@@ -11,7 +11,10 @@ export const elements = {
     chartgoalsForBest: document.querySelector('#chartGoalsForBest'),
     chartgoalsForWorst: document.querySelector('#chartGoalsForWorst'),
     chartgoalsAgainstBest: document.querySelector('#chartGoalsAgainstBest'),
-    chartgoalsAgainstWorst: document.querySelector('#chartGoalsAgainstWorst')
+    chartgoalsAgainstWorst: document.querySelector('#chartGoalsAgainstWorst'),
+    chartDiffButtons: document.querySelectorAll('.chart-settings__value'),
+    chartDiffButtonsLow: document.querySelector('.chart-settings__value--low'),
+    chartDiffButtonsHigh: document.querySelector('.chart-settings__value--high')
 };
 
 export const changeTeamName = (name) => {

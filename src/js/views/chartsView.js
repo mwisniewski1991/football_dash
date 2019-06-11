@@ -19,10 +19,13 @@ const colorNegativeValue = (arr) => {
     return colorArr
 };
 
+
+
 //CREATE FIRST CHART FROM UI
 export const createChartGoalDiff = (chartData) =>{
 
     // console.log(chartData); //test
+
     const options =  {
         maintainAspectRatio: false,
         legend: {
@@ -159,10 +162,12 @@ export const creatChartGoal = (chartData, type) => {
 
      //CREATE CHART- IF EXIST UPDATE
 
-     if(window.ChartGoalsForBest){
-        window.ChartGoalsForBest.data.datasets[0].data = chartData.goalsDiff
-        window.ChartGoalsForBest.data.labels = chartData.teams.map(el => changeTeamName(el)), //change team name - replace 'AFC' and 'FC'
-        window.ChartGoalsForBest.update();
+     if(window[`chart${type}`]){
+        window[`chart${type}`].data.datasets[0].data = chartData.total
+        window[`chart${type}`].data.datasets[1].data = chartData.home
+        window[`chart${type}`].data.datasets[2].data = chartData.away
+        window[`chart${type}`].data.labels = chartData.teams.map(el => changeTeamName(el)), //change team name - replace 'AFC' and 'FC'
+        window[`chart${type}`].update();
     }
     else{
         const ctx = elements[`chart${type}`];

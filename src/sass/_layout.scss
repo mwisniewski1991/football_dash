@@ -1,3 +1,50 @@
+.section-league {
+    padding: 2rem;
+    @include one-bg; //linear background one
+}
+
+.section-league-stats {
+    padding: 2rem;
+    @include two-bg; //linear background one
+}
+
+.section-teams {
+    padding: 2rem;
+    @include one-bg; //linear background one
+}
+
+.section-teams-stats {
+    padding: 2rem;
+    @include two-bg; //linear background one
+}
+
+//HEADER
+.header {
+    height: 95vh;
+    background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-main-one, 0.2), 
+        rgba($color-main-three, 0.2)), 
+        url("../img/back-1.jpg");
+    // background-image: url("../img/back-1.jpg");
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    
+
+    &__logo-box {
+        font-size: 3rem;
+        color: $color-white;
+        text-shadow: 2px 2px 2px $color-black;
+    }
+}
+
+//FELX BOXES
 .row {
     width: 100%;
     display: flex;

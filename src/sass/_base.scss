@@ -23,6 +23,9 @@ html{
 
 body {
     box-sizing: border-box;
+    font-family: 'K2D', sans-serif;
+    padding: 1rem;
+    background-color: rgba($color-main-one, 0.3);
 }
 
 table, caption, tbody, tfoot, thead, tr, th, td {
@@ -37,3 +40,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     border-collapse: collapse;
     border-spacing: 0;
   }
+
+  a {
+    text-decoration: none;
+}

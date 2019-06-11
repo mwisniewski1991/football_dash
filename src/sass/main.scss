@@ -1,19 +1,4 @@
-@import "abstracts/functions";
-@import "abstracts/mixins";
-@import "abstracts/variables";
-
-@import "base/animations";
-@import "base/base";
-@import "base/typography";
-@import "base/utilities";
-
-@import "components/tables";
-@import "components/chart_box";
-@import "components/change-leagueType";
-@import "components/select";
-@import "components/icon";
-
-@import "layout/header";
-@import "layout/flex";
-
-@import "pages/home";
+@import "abstracts";
+@import "base";
+@import "components";
+@import "layout";

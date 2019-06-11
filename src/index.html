@@ -136,8 +136,17 @@
             <div class="row">
                     <div class="col-100">
                             <div class="u-text-center u-margin-bottom-small">
-                                    <h2 class="heading-three">Goals difference</h2>
-                                </div>
+                                <h2 class="heading-three">Goals difference</h2>
+                            </div>
+
+                            <div class="chart-settings">
+                                <span class="chart-settings__text">Start from team:</span>
+                                <input type="number" class="chart-settings__value chart-settings__value--low" min=1 value=1>
+                                <span class="chart-settings__text">End with team:</span>
+                                <input type="number" class="chart-settings__value chart-settings__value--high" max=20 value=20>
+                            </div>
+
+
                             <div class="chart-box">
                                 <canvas id="chartGoalsDiff" width="400" height="400"></canvas>
                             </div>
@@ -207,6 +216,9 @@
 
     </main>
 
+
+
+
     
         <!-- <section class="section-teams">
                 <div class="u-text-center u-margin-top-small u-margin-bottom-medium">
@@ -258,7 +270,6 @@
                                         </table>
                         </div>
                 </div>
-
         </section> -->
 
         <!-- <section class="section-teams-stats">
@@ -279,8 +290,6 @@
                         </div>
                     </div> 
         </section> -->
-
-    
 
 
     <!-- <section class="flex-lay">

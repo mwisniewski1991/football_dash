@@ -1,8 +1,10 @@
 import { sortBy } from "lodash";
 
 //modify data for chart goal diff
-export const formatTableDataForChart = (data, start = 1, end = 15) => {
-    // console.log(data); //test
+export const formatTableDataForChart = (data, start = 0, end = 20) => {
+    console.log(data); //test
+    console.log(start);
+    console.log(end);
 
     //1. sort data
     data = sortBy(data, [g => g.goalDifference]); //sort data by goalsDiff
@@ -24,8 +26,10 @@ export const formatTableDataForChart = (data, start = 1, end = 15) => {
     newData.goalDifference = goalsDiff.reverse(); //reverse - sortby in wrong way
 
     //5. Cut data - acording to require length
-    newData.teams = teams.splice(start -1, end);
-    newData.goalDifference = goalsDiff.splice(start -1, end); 
+    newData.teams = teams.slice(start , end);
+    newData.goalDifference = goalsDiff.slice(start , end); 
+
+    console.log(newData);
 
     return newData
 };
