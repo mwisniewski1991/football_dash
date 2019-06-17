@@ -1,10 +1,9 @@
+import '../sass/main.scss'; //IMPORT SASS
 import League from './models/League';
 import * as leagueView from './views/leagueView';
 import * as chartsView from './views/chartsView';
 import * as chartsData from './views/chartsData';
-import {
-    elements
-} from './views/base';
+import {elements} from './views/base';
 
 // import './../sass/main.scss';
 
@@ -12,7 +11,8 @@ import {
 //currentComp, tableTotal, tableHome, tableAway, scorers
 const state = {};
 
-
+//*********************************************************************************
+//*********************************************************************************
 //API CONTROLLER
 const controlSearch = async (e) => {
 
@@ -20,10 +20,17 @@ const controlSearch = async (e) => {
     let leagueId;
     const selectButtons = elements.selectButtons;
 
+    //set up league id
     if (e) {
-        leagueId = e.target.id;
+        //if choose the same league as current do not use api data again
+        if (e.target.id === state.league.idLeague){
+            return;
+        }
+        else{
+            leagueId = e.target.id;
+        }
     } else {
-        leagueId = '2021'
+        leagueId = '2014'
     }
 
     //2. NEW SEARCH OBJECT ADD TO STATE
@@ -40,10 +47,16 @@ const controlSearch = async (e) => {
         //3. SEARCH FOR LEAGUE
         await state.league.getTables();
         await state.league.getScorers();
+        state.league.getCurrentType(); //set up current league type
+
+        //test
+        // await state.league.getTeam();
 
         //4. PREPARE UI FOR INPUT
         leagueView.clearTable();
-        leagueView.clearScorers()
+        leagueView.clearScorers();
+        leagueView.defaultTypeButtons();
+
 
         //5. RENDER TABLE
         leagueView.createLeagueTitle(state.league.currentComp);
@@ -51,43 +64,47 @@ const controlSearch = async (e) => {
         leagueView.createScorers(state.league.scorers); //scorers table
 
         //6. RENDER CHARTS
+        //a. GOAL DIFF
+        //reset input to default value
+        chartsView.resetInputValue();
+
         //goals diffrences
         const chartGoalDiffData = chartsData.formatTableDataForChart(state.league.tableTotal);
         chartsView.createChartGoalDiff(chartGoalDiffData);
 
-        //goals for best
+        //change chary diff title
+        chartsView.chartGoalDiffTitle(state.league.currentType);
+
+        //b. GOALS FOR/AGAINST
+        //reset input to default value
+        chartsView.resetSlidervalue();
+
         {
+            //create data chart
             const chartGoalData = chartsData.formatDataForChartForAgainst(state.league, "goalsForBest", 1, 10);
             // console.log(chartGoalData);
+            //render chart
             chartsView.creatChartGoal(chartGoalData, "goalsForBest");
         }
-
         {
             const chartGoalData = chartsData.formatDataForChartForAgainst(state.league, "goalsForWorst");
             // console.log(chartGoalData);
             chartsView.creatChartGoal(chartGoalData, "goalsForWorst");
         }
-
         {
             const chartGoalData = chartsData.formatDataForChartForAgainst(state.league, "goalsAgainstBest");
             // console.log(chartGoalData);
             chartsView.creatChartGoal(chartGoalData, "goalsAgainstBest");
         }
-
-
         {
             const chartGoalData = chartsData.formatDataForChartForAgainst(state.league, "goalsAgainstWorst");
             // console.log(chartGoalData);
             chartsView.creatChartGoal(chartGoalData, "goalsAgainstWorst");
         }
-
-
-
     } catch (error) {
         console.log(error);
     }
 };
-
 
 //CHANGE LEGAUE TABLE TOTAL/HOME/AWAY
 const changeLeagueKind = (e) => {
@@ -106,23 +123,26 @@ const changeLeagueKind = (e) => {
 
     //4. render new table and udpate chart
     let type = e.target.id.charAt(0).toUpperCase() + e.target.id.slice(1) //change first letter to uppercase. necessery for next step
-
-    //change current type in state
-    state.league.currentType = type;
+    //set up current league type
+    state.league.getCurrentType(type);
 
     //create league table
-    leagueView.createTable(state.league[`table${type}`]);
+    leagueView.createTable(state.league[`table${state.league.currentType}`]);
 
     //get value from input to update chart
     let start = elements.chartDiffButtonsLow.value;
     let end = elements.chartDiffButtonsHigh.value;
 
     //create golas diff chart
-    let chartGoalDiffData = chartsData.formatTableDataForChart(state.league[`table${type}`], start, end);
+    let chartGoalDiffData = chartsData.formatTableDataForChart(state.league[`table${state.league.currentType}`], start, end);
     chartsView.createChartGoalDiff(chartGoalDiffData);
+    //change chary diff title
+    chartsView.chartGoalDiffTitle(state.league.currentType);
 };
 
-//CHANGE CHART DIFF
+//*********************************************************************************
+//*********************************************************************************
+//CHANGE CHART DIFF BASE ON INPUT VALUE
 const chartDiffUpdate = () => {
 
     //1. GET VALUE FROM INPUTS 
@@ -138,24 +158,56 @@ const chartDiffUpdate = () => {
     chartsView.createChartGoalDiff(chartGoalDiffData);   
 };
 
+//*********************************************************************************
+//*********************************************************************************
+//CHANGE CHART GOALS BASE ON SLIDER VALUE
+const chartGoalsUpdate = (e) =>{
 
-//LISTENER TO CHANGE LEGAUE TABLE TOTAL/HOME/AWAY
-Array.from(elements.tableButtons).forEach(el => {
-    el.addEventListener('click', changeLeagueKind);
-})
+    //1. GET VALUE FOR TYPE OF CHARTS WHICH WE WANT TO CHANGE AND VALUE FROM SLIDER
+    const type = e.target.id;
+    const value = e.target.value;
+
+    //2.PUT DATAE TO DATA FUNCTION
+    const chartGoalData = chartsData.formatDataForChartForAgainst(state.league, type, 1, value);
+    
+    //3.UDATE SPAN ELEMENT - NUMBERS OF TEAMS
+    //find two parents of elements and then find span element
+    e.target.parentElement.parentElement.querySelector('.chartGoalsValue').textContent = value;
+
+    //4.UPDATE CHART
+    chartsView.creatChartGoal(chartGoalData, type);
+
+};
+
+
+
+//*********************************************************************************
+//*********************************************************************************
+//LISTENERS --------------------------------------------------------------LISTENERS
 
 //LISTENER TO CHANGE LEAGUE
 Array.from(elements.selectButtons).forEach(el => {
     el.addEventListener('click', controlSearch);
-})
+});
 
+//LISTENER TO CHANGE LEGAUE TABLE TOTAL/HOME/AWAY
+Array.from(elements.tableButtons).forEach(el => {
+    el.addEventListener('click', changeLeagueKind);
+});
 
 //LISTENER TO CHART DIFF INPUT
 Array.from(elements.chartDiffButtons).forEach(el => {
     el.addEventListener('change', chartDiffUpdate)
 });
 
+//LISTENERST TO CHART GOALS RANGE SLIDER
+Array.from(elements.chartsGoalsSlider).forEach(el =>{
+    el.addEventListener('change', chartGoalsUpdate);
+});
 
+
+//*********************************************************************************
+//********************************************************************************
 //START ON LOAD
 controlSearch();
-console.log(state);
+console.log(state); //test

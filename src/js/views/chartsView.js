@@ -1,27 +1,33 @@
 import { elements, changeTeamName } from "./base";
 import { Chart }  from 'chart.js'
 
-
+//*********************************************************************************
+//*********************************************************************************
+//ADDINS
 //DIFFRENT COLOR FOR NEGATIVE VALUE
 const colorNegativeValue = (arr) => {
+    
     const more = "rgba(32, 100, 17, .6)";
     const less = "rgba(134, 0, 0, .6)";
     const colorArr = [];
 
-    for (let i = 0; i<arr.length; i++){
-        if (arr[i] >= 0){
+    //1. IF VALUE LESS THAN 0 THEN RED COLOR. GREATER GREEN.
+    arr.forEach((el) => {
+        if(el >= 0){
             colorArr.push(more)
         }
-        else {
+        else{
             colorArr.push(less)
         }
-    }
+    });
+
     return colorArr
 };
 
 
-
-//CREATE FIRST CHART FROM UI
+//*********************************************************************************
+//*********************************************************************************
+//CHART GOLAS DIFFRENCES 
 export const createChartGoalDiff = (chartData) =>{
 
     // console.log(chartData); //test
@@ -64,7 +70,6 @@ export const createChartGoalDiff = (chartData) =>{
         datasets: [{
             label: 'Goals Diff',
             data: chartData.goalDifference,
-           //  backgroundColor: `rgba(${color1}, ${bar1})`,
             backgroundColor: colorNegativeValue(chartData.goalDifference),
             borderColor: '#000',
             borderWidth: 1
@@ -73,8 +78,9 @@ export const createChartGoalDiff = (chartData) =>{
     
     //CREATE CHART- IF EXIST UPDATE
     if(window.ChartGoalsDiff){
-        window.ChartGoalsDiff.data.datasets[0].data = chartData.goalDifference
-        window.ChartGoalsDiff.data.labels = chartData.teams.map(el => changeTeamName(el)), //change team name - replace 'AFC' and 'FC'
+        window.ChartGoalsDiff.data.datasets[0].data = chartData.goalDifference;
+        window.ChartGoalsDiff.data.datasets[0].backgroundColor = colorNegativeValue(chartData.goalDifference);
+        window.ChartGoalsDiff.data.labels = chartData.teams.map(el => changeTeamName(el)); //change team name - replace 'AFC' and 'FC'
         window.ChartGoalsDiff.update();
     }
     else{
@@ -88,7 +94,21 @@ export const createChartGoalDiff = (chartData) =>{
     }
 };
 
+//RESET VALUE FOR INPUTS
+export const resetInputValue = () => {
+    elements.chartDiffButtonsLow.value = 1;
+    elements.chartDiffButtonsHigh.value = 20;
+};
 
+//CREATE TITLE FOR CHART
+export const chartGoalDiffTitle = (type) => {
+    const string = `Goalf diffrence - ${type}`;
+    elements.chartDiffTitle.textContent = string; 
+};
+
+//*********************************************************************************
+//*********************************************************************************
+//CHART GOLAS FOR/AGAINST
 export const creatChartGoal = (chartData, type) => {
     // console.log(chartData);
     // console.log(type);
@@ -163,10 +183,10 @@ export const creatChartGoal = (chartData, type) => {
      //CREATE CHART- IF EXIST UPDATE
 
      if(window[`chart${type}`]){
-        window[`chart${type}`].data.datasets[0].data = chartData.total
-        window[`chart${type}`].data.datasets[1].data = chartData.home
-        window[`chart${type}`].data.datasets[2].data = chartData.away
-        window[`chart${type}`].data.labels = chartData.teams.map(el => changeTeamName(el)), //change team name - replace 'AFC' and 'FC'
+        window[`chart${type}`].data.datasets[0].data = chartData.total;
+        window[`chart${type}`].data.datasets[1].data = chartData.home;
+        window[`chart${type}`].data.datasets[2].data = chartData.away;
+        window[`chart${type}`].data.labels = chartData.teams.map(el => changeTeamName(el)); //change team name - replace 'AFC' and 'FC'
         window[`chart${type}`].update();
     }
     else{
@@ -180,3 +200,12 @@ export const creatChartGoal = (chartData, type) => {
     }
 
 };
+
+//RESET VALUE FOR SLIDERS
+export const resetSlidervalue = () =>{
+    Array.from(elements.chartsGoalsSlider).forEach(el=>{
+        el.value = 10;  //value on input
+        el.parentElement.parentElement.querySelector('.chartGoalsValue').textContent = 10; //value on span element
+    });
+};
+

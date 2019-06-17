@@ -4,31 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Football Dash</title>
-    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
     <link href="https://fonts.googleapis.com/css?family=K2D:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
 <body>
-    
+
     <div class="select">
-  
-        <input type="checkbox" class="select__checkbox" id="select-trigger">  
+
+        <input type="checkbox" class="select__checkbox" id="select-trigger">
         <label for="select-trigger" class="select__button">
-          <span class="select__icon">&nbsp;</span>
+            <span class="select__icon">&nbsp;</span>
         </label>
-        
+
         <div class="select__nav">
-          <ul class="select__list">
-            <li class="select__item"><div class="select__link select__link--pl" id="2021">Premier League</div></li>
-            <li class="select__item"><div class="select__link select__link--pd" id="2014">Primera Division</div></li>
-            <li class="select__item"><div class="select__link select__link--sa" id="2019">Serie A</div></li>
-            <li class="select__item"><div class="select__link select__link--bl" id="2002">Bundesliga</div></li>
-            <li class="select__item"><div class="select__link select__link--l1" id="2015">Ligue 1</div></li>
-          </ul>
+            <ul class="select__list">
+                <li class="select__item">
+                    <div class="select__link select__link--pl" id="2021">Premier League</div>
+                </li>
+                <li class="select__item">
+                    <div class="select__link select__link--pd" id="2014">Primera Division</div>
+                </li>
+                <li class="select__item">
+                    <div class="select__link select__link--sa" id="2019">Serie A</div>
+                </li>
+                <li class="select__item">
+                    <div class="select__link select__link--bl" id="2002">Bundesliga</div>
+                </li>
+                <li class="select__item">
+                    <div class="select__link select__link--l1" id="2015">Ligue 1</div>
+                </li>
+            </ul>
         </div>
-        
-      </div>
+
+    </div>
 
 
 
@@ -48,34 +59,38 @@
                 <h2 class="heading-two" id="leagueTitle">loading...</h2>
             </div>
 
+            <!-- *************************************************************************** -->
+            <!-- TABLE **********************************************************************-->
+            <!-- *************************************************************************** -->
             <div class="row">
-                    <div class="col-65">
-                        <div class="u-text-center u-margin-bottom-small u-position-relative">
-                            <h3 class="heading-three" id="leagueTitle">League table</h3>
-                            <div class="changeLeague-type">
-                                <div class="changeLeague-type__button changeLeague-type__button--1 changeLeague-type__button--clicked" id="total">T</div>
-                                <div class="changeLeague-type__button changeLeague-type__button--2" id="home">H</div>
-                                <div class="changeLeague-type__button changeLeague-type__button--3" id="away">A</div>
-                            </div>
+                <div class="col-65">
+                    <div class="u-text-center u-margin-bottom-small u-position-relative">
+                        <h3 class="heading-three" id="leagueTitle">League table</h3>
+                        <div class="changeLeague-type">
+                            <div class="changeLeague-type__button changeLeague-type__button--1 changeLeague-type__button--clicked"
+                                id="total">T</div>
+                            <div class="changeLeague-type__button changeLeague-type__button--2" id="home">H</div>
+                            <div class="changeLeague-type__button changeLeague-type__button--3" id="away">A</div>
                         </div>
+                    </div>
 
-                        <table class="table table__league">
-                            <thead>
-                                <tr>
-                                    <th class="table__league-position">Position</th>
-                                    <th class="table__league-teams">Team</th>
-                                    <th class="table__league-played-games">Played Games</th>
-                                    <th class="table__league-wins">Wins</th>
-                                    <th class="table__league-draw">Draw</th>
-                                    <th class="table__league-lost">Lost</th>
-                                    <th class="table__league-goals-for">Goals For</th>
-                                    <th class="table__league-goals-against">Goals Against</th>
-                                    <th class="table__league-goals-diff">Goals Diff</th>
-                                    <th class="table__league-points">Points</th>
-                                </tr>
-                            </thead>
-                            <tbody id="body-league-table">
-                                <!-- <tr><td>1</td><td>Arsenal</td><td>29</td><td>1</td><td>2</td><td>3</td><td>12</td><td>5</td><td>7</td><td>35</td></tr>
+                    <table class="table table__league">
+                        <thead>
+                            <tr>
+                                <th class="table__league-position">Position</th>
+                                <th class="table__league-teams">Team</th>
+                                <th class="table__league-played-games">Played Games</th>
+                                <th class="table__league-wins">Wins</th>
+                                <th class="table__league-draw">Draw</th>
+                                <th class="table__league-lost">Lost</th>
+                                <th class="table__league-goals-for">Goals For</th>
+                                <th class="table__league-goals-against">Goals Against</th>
+                                <th class="table__league-goals-diff">Goals Diff</th>
+                                <th class="table__league-points">Points</th>
+                            </tr>
+                        </thead>
+                        <tbody id="body-league-table">
+                            <!-- <tr><td>1</td><td>Arsenal</td><td>29</td><td>1</td><td>2</td><td>3</td><td>12</td><td>5</td><td>7</td><td>35</td></tr>
                                 <tr><td>2</td><td>Arsenal</td><td>29</td><td>1</td><td>2</td><td>3</td><td>12</td><td>5</td><td>7</td><td>35</td></tr>
                                 <tr><td>3</td><td>Arsenal</td><td>29</td><td>1</td><td>2</td><td>3</td><td>12</td><td>5</td><td>7</td><td>35</td></tr>
                                 <tr><td>4</td><td>Arsenal</td><td>29</td><td>1</td><td>2</td><td>3</td><td>12</td><td>5</td><td>7</td><td>35</td></tr>
@@ -95,23 +110,23 @@
                                 <tr><td>18</td><td>Arsenal</td><td>29</td><td>1</td><td>2</td><td>3</td><td>12</td><td>5</td><td>7</td><td>35</td></tr>
                                 <tr><td>19</td><td>Arsenal</td><td>29</td><td>1</td><td>2</td><td>3</td><td>12</td><td>5</td><td>7</td><td>35</td></tr>
                                 <tr><td>20</td><td>Arsenal</td><td>29</td><td>1</td><td>2</td><td>3</td><td>12</td><td>5</td><td>7</td><td>35</td></tr> -->
-                            </tbody>
-                        </table>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-35">
+                    <div class="u-text-center u-margin-bottom-small">
+                        <h3 class="heading-three">League scorers</h3>
                     </div>
-                    <div class="col-35">
-                        <div class="u-text-center u-margin-bottom-small">
-                            <h3 class="heading-three">League scorers</h3>
-                        </div>
-                        <table class="table table__scorers">
-                            <thead>
-                                <tr>
-                                    <th class="table__scorers-name">Name</th>
-                                    <th class="table__scorers-club">Club</th>
-                                    <th class="table__scorers-goals">Goals</th>
-                                </tr>
-                            </thead>
-                            <tbody id="body-scorers-table">
-                                <!-- <tr><td>Aguero</td><td>Manchester City</td><td>20</td></tr>
+                    <table class="table table__scorers">
+                        <thead>
+                            <tr>
+                                <th class="table__scorers-name">Name</th>
+                                <th class="table__scorers-club">Club</th>
+                                <th class="table__scorers-goals">Goals</th>
+                            </tr>
+                        </thead>
+                        <tbody id="body-scorers-table">
+                            <!-- <tr><td>Aguero</td><td>Manchester City</td><td>20</td></tr>
                                 <tr><td>Aguero</td><td>Manchester City</td><td>20</td></tr>
                                 <tr><td>Aguero</td><td>Manchester City</td><td>20</td></tr>
                                 <tr><td>Aguero</td><td>Manchester City</td><td>20</td></tr>
@@ -121,42 +136,59 @@
                                 <tr><td>Aguero</td><td>Manchester City</td><td>20</td></tr>
                                 <tr><td>Aguero</td><td>Manchester City</td><td>20</td></tr>
                                 <tr><td>Aguero</td><td>Manchester City</td><td>20</td></tr> -->
-                            </tbody>
-                        </table>
-                    </div>
-             </div>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </section>
 
+        <!-- *************************************************************************** -->
+        <!-- STATS SECTION ************************************************************* -->
+        <!-- *************************************************************************** -->
         <section class="section-league-stats">
-            
+
             <div class="u-text-center u-margin-bottom-small">
                 <h2 class="heading-two">Stats</h2>
             </div>
 
+            <!-- *************************************************************************** -->
+            <!-- CHART DIFF************************************************************* -->
+            <!-- *************************************************************************** -->
             <div class="row">
-                    <div class="col-100">
-                            <div class="u-text-center u-margin-bottom-small">
-                                <h2 class="heading-three">Goals difference</h2>
-                            </div>
-
-                            <div class="chart-settings">
-                                <span class="chart-settings__text">Start from team:</span>
-                                <input type="number" class="chart-settings__value chart-settings__value--low" min=1 value=1>
-                                <span class="chart-settings__text">End with team:</span>
-                                <input type="number" class="chart-settings__value chart-settings__value--high" max=20 value=20>
-                            </div>
-
-
-                            <div class="chart-box">
-                                <canvas id="chartGoalsDiff" width="400" height="400"></canvas>
-                            </div>
+                <div class="col-100">
+                    <div class="u-text-center u-margin-bottom-small">
+                        <h2 class="heading-three goalDiffTitle">Goals difference</h2>
                     </div>
+
+                    <div class="chartDiff-settings">
+                        <span class="chartDiff-settings__text">Start from team:</span>
+                        <input type="number" class="chartDiff-settings__value chartDiff-settings__value--low" min=1
+                            value=1>
+                        <span class="chartDiff-settings__text">End with team:</span>
+                        <input type="number" class="chartDiff-settings__value chartDiff-settings__value--high" max=20
+                            value=20>
+                    </div>
+
+
+                    <div class="chart-box">
+                        <canvas id="chartGoalsDiff" width="400" height="400"></canvas>
+                    </div>
+                </div>
             </div>
 
-             <div class="row">
-                <div class="col-25 u-flex">
-                    <div class="u-margin-auto">
-                        <h2 class="heading-three u-margin-bottom-small">Goals For </br> Best Teams</h2>
+            <!-- *************************************************************************** -->
+            <!-- CHARTS GOALS************************************************************* -->
+            <!-- *************************************************************************** -->
+            <div class="row">
+
+                <div class="col-25 chartGoals-box">
+                    <div class="chartGoals-box__details">
+                        <h2 class="heading-three u-margin-bottom-small">Goals For
+                            </br> <span class="chartGoalsValue chartGoalsValue--ForBest">10</span> Best Teams</h2>
+                        <div class="chartGoals-box__settings">
+                            <input type="range" class="chartGoals-box__value chartGoals-box__value--ForBest" id="goalsForBest"
+                                value="10" min="1" max="20">
+                        </div>
                         <i class="fas fa-futbol icon icon__for"></i>
                     </div>
                 </div>
@@ -166,13 +198,18 @@
                         <canvas id="chartGoalsForBest" width="400" height="400"></canvas>
                     </div>
                 </div>
-            </div> 
-            
+
+            </div>
 
             <div class="row">
-                <div class="col-25 u-flex">
-                    <div class="u-margin-auto">
-                        <h2 class="heading-three u-margin-bottom-small">Goals For </br> Worst Teams</h2>
+                <div class="col-25 chartGoals-box">
+                    <div class="chartGoals-box__details">
+                        <h2 class="heading-three u-margin-bottom-small">Goals For
+                            </br> <span class="chartGoalsValue chartGoalsValue--ForWorst">10</span> Worst Teams</h2>
+                        <div class="chartGoals-box__settings">
+                            <input type="range" class="chartGoals-box__value chartGoals-box__value--ForWorst" id="goalsForWorst"
+                                value="10" min="1" max="20">
+                        </div>
                         <i class="fas fa-futbol icon icon__against"></i>
                     </div>
                 </div>
@@ -184,9 +221,14 @@
             </div>
 
             <div class="row">
-                <div class="col-25 u-flex">
-                    <div class="u-margin-auto">
-                        <h2 class="heading-three u-margin-bottom-small">Goals Against </br> Best Teams</h2>
+                <div class="col-25 chartGoals-box">
+                    <div class="chartGoals-box__details">
+                        <h2 class="heading-three u-margin-bottom-small">Goals Against
+                            </br> <span class="chartGoalsValue chartGoalsValue--AgainstBest">10</span> Best Teams</h2>
+                        <div class="chartGoals-box__settings">
+                            <input type="range" class="chartGoals-box__value chartGoals-box__value--AgainstBest"
+                                id="goalsAgainstBest" value="10" min="1" max="20">
+                        </div>
                         <i class="far fa-times-circle icon icon__for"></i>
                     </div>
                 </div>
@@ -198,9 +240,14 @@
             </div>
 
             <div class="row">
-                <div class="col-25 u-flex">
-                    <div class="u-margin-auto">
-                        <h2 class="heading-three u-margin-bottom-small">Goals Against </br> Best Teams</h2>
+                <div class="col-25 chartGoals-box">
+                    <div class="chartGoals-box__details">
+                        <h2 class="heading-three u-margin-bottom-small">Goals Against
+                            </br> <span class="chartGoalsValue chartGoalsValue--AgainstWorst">10</span> Best Teams</h2>
+                        <div class="chartGoals-box__settings">
+                            <input type="range" class="chartGoals-box__value chartGoals-box__value--AgainstWorst"
+                                id="goalsAgainstWorst" value="10" min="1" max="20">
+                        </div>
                         <i class="far fa-times-circle icon icon__against"></i>
                     </div>
                 </div>
@@ -219,8 +266,8 @@
 
 
 
-    
-        <!-- <section class="section-teams">
+
+    <!-- <section class="section-teams">
                 <div class="u-text-center u-margin-top-small u-margin-bottom-medium">
                         <h2 class="heading-two">Arsenal</h2>
                 </div>
@@ -272,7 +319,7 @@
                 </div>
         </section> -->
 
-        <!-- <section class="section-teams-stats">
+    <!-- <section class="section-teams-stats">
                 <div class="u-text-center u-margin-bottom-small">
                         <h3 class="heading-three">Team Stats</h3>
                     </div>

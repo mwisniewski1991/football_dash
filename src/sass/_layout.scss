@@ -44,6 +44,54 @@
     }
 }
 
+//CHARTS GOALS
+.chartGoals-box{
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+
+    &__details{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__settings{
+        margin-bottom: 2rem;
+    }
+
+    &__value{
+        -webkit-appearance: none; 
+        width: 100%;
+        background: transparent;
+        color: $color-main-two;
+
+        &::-webkit-slider-thumb {
+            border: 1px solid #000000;
+            height: 36px;
+            width: 160px;
+            border-radius: 50rem;
+            background: $color-main-one;
+        }
+
+        &::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 1rem;
+            background: $color-main-one;
+            box-shadow: 1px 1px 1px #000000;
+            border-radius: 20rem;
+            cursor: pointer;
+          }
+
+        
+        &:focus{
+            outline: none;
+        }
+
+    }
+}
+
 //FELX BOXES
 .row {
     width: 100%;

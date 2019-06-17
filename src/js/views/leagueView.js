@@ -1,6 +1,7 @@
 import { elements, changeTeamName } from "./base";
 
-
+//*********************************************************************************
+//*********************************************************************************
 //TABLE PART
 const renderTable = (el) => {
 
@@ -35,7 +36,20 @@ export const createLeagueTitle = (leagueName) => {
     elements.leagueTableTitle.textContent = leagueName;
 };
 
+export const defaultTypeButtons = () => {
 
+    //1.REMOVE CLASS FROM EVRY BUTTON
+    const buttons = Array.from(elements.tableButtons);
+    buttons.forEach(el => {
+        el.classList.remove('changeLeague-type__button--clicked');
+    });
+
+    //2.ADD CLASS TO TOTAL BUTTON
+    elements.tableButtonTotal.classList.add('changeLeague-type__button--clicked');
+};
+
+//*********************************************************************************
+//*********************************************************************************
 //SCORERS PART
 const renderScorers = (el) => {
     const markup = `

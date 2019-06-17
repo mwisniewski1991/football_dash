@@ -29,6 +29,10 @@ export default class League{
         }
     }
 
+    getCurrentType(type = 'Total'){
+        this.currentType = type;
+    }
+
     async getScorers(){
         try{
             const res = await axios({
@@ -39,6 +43,26 @@ export default class League{
 
             // console.log(res);
             this.scorers = res.data.scorers;
+        }
+        catch(error){
+            alert(error);
+        }
+    }
+
+    //TEST 
+    async getTeam(){
+        try{
+            const team = await axios({
+                method: 'get',
+                url: `${proxy}http://api.football-data.org/v2/teams/58`,
+                // url: `${proxy}http://api.football-data.org/v2/teams/2/matches/`,
+                headers: {'X-Auth-Token': key}
+            });
+
+            this.team = team.data;
+            console.log(this.team);
+
+
         }
         catch(error){
             alert(error);
