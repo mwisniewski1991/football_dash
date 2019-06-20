@@ -27,7 +27,7 @@ const colorNegativeValue = (arr) => {
 
 //*********************************************************************************
 //*********************************************************************************
-//CHART GOLAS DIFFRENCES 
+//CHART GOALS DIFFRENCES 
 export const createChartGoalDiff = (chartData) =>{
 
     // console.log(chartData); //test
@@ -104,6 +104,11 @@ export const resetInputValue = () => {
 export const chartGoalDiffTitle = (type) => {
     const string = `Goalf diffrence - ${type}`;
     elements.chartDiffTitle.textContent = string; 
+};
+
+export const changeInputMax = (max) =>{
+    elements.chartDiffButtonsHigh.value = max;
+    elements.chartDiffButtonsHigh.setAttribute('max', max);
 };
 
 //*********************************************************************************

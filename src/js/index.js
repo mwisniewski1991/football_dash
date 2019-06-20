@@ -3,9 +3,9 @@ import League from './models/League';
 import * as leagueView from './views/leagueView';
 import * as chartsView from './views/chartsView';
 import * as chartsData from './views/chartsData';
+import * as buttonEvent from './views/buttonEvent';
 import {elements} from './views/base';
 
-// import './../sass/main.scss';
 
 //GLOBAL STATE OF THE APP
 //currentComp, tableTotal, tableHome, tableAway, scorers
@@ -69,8 +69,9 @@ const controlSearch = async (e) => {
         chartsView.resetInputValue();
 
         //goals diffrences
-        const chartGoalDiffData = chartsData.formatTableDataForChart(state.league.tableTotal);
-        chartsView.createChartGoalDiff(chartGoalDiffData);
+        const chartGoalDiffData = chartsData.formatTableDataForChart(state.league.tableTotal); //create data
+        chartsView.createChartGoalDiff(chartGoalDiffData); //render chart
+        chartsView.changeInputMax(chartGoalDiffData.teams.length) //set-up input value - max equal number os teams
 
         //change chary diff title
         chartsView.chartGoalDiffTitle(state.league.currentType);
@@ -112,11 +113,11 @@ const changeLeagueKind = (e) => {
     //1. remove clicked class from whole elements
     const buttons = Array.from(elements.tableButtons);
     buttons.forEach(el => {
-        el.classList.remove('changeLeague-type__button--clicked');
+        el.classList.remove('select__link--clicked');
     });
 
     //2. add class to clicked element
-    event.target.classList.add('changeLeague-type__button--clicked');
+    event.target.classList.add('select__link--clicked');
 
     //3.clear table from UI
     leagueView.clearTable();
@@ -200,11 +201,13 @@ Array.from(elements.chartDiffButtons).forEach(el => {
     el.addEventListener('change', chartDiffUpdate)
 });
 
-//LISTENERST TO CHART GOALS RANGE SLIDER
+//LISTENER TO CHART GOALS RANGE SLIDER
 Array.from(elements.chartsGoalsSlider).forEach(el =>{
     el.addEventListener('change', chartGoalsUpdate);
 });
 
+//LISTENER TO DASH BUTTON
+elements.selectDashButton.addEventListener("click", buttonEvent.moveDashControll);
 
 //*********************************************************************************
 //********************************************************************************

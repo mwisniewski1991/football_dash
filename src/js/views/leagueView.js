@@ -37,7 +37,7 @@ export const createLeagueTitle = (leagueName) => {
 };
 
 export const defaultTypeButtons = () => {
-
+    
     //1.REMOVE CLASS FROM EVRY BUTTON
     const buttons = Array.from(elements.tableButtons);
     buttons.forEach(el => {
@@ -45,7 +45,7 @@ export const defaultTypeButtons = () => {
     });
 
     //2.ADD CLASS TO TOTAL BUTTON
-    elements.tableButtonTotal.classList.add('changeLeague-type__button--clicked');
+    elements.tableButtonTotal.classList.add('select__link--clicked');
 };
 
 //*********************************************************************************

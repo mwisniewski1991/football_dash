@@ -50,38 +50,49 @@
 
 //SELECT
 .select { 
+    position: fixed;
+    top: 4rem;
+    right: 1rem;
+    transform: translateX(100%);
+    transition: all .5s;
+
+    z-index: 100;
     
     &__checkbox {
        display: none;
     }
     
     &__button {
-      position: fixed;
-      top: 60px;
-      right: 60px;
-      width: 50px;
-      height: 50px;
-      background-color: rgba($color-white, .5);
-      box-shadow: 0 0 10px 0px $color-main-one;
-      border-radius: 50%;
-      cursor: pointer;
-      z-index: 100;
-      
-      &::after {
-        content: "";
-        height: 100%;
-        width: 100%;
         position: absolute;
-        top:0;
-        left:0;
-        z-index:-1;
+        left: -4rem;
+        top: 2rem;
+
+
+        width: 4rem;
+        height: 8rem;
         background-color: rgba($color-white, .5);
-        border-radius: 50%;
-      }
+    //   box-shadow: 0 0 10px 0px $color-main-one;
+        cursor: pointer;
+        z-index: 100;
+
+        &:hover{
+            background-color: rgba($color-white, .75);
+        }
       
-      &:hover::after {
-        animation: pulsar .5s cubic-bezier(.97,.34,.78,.36) infinite;
-      }
+    //   &::after {
+    //     content: "";
+    //     height: 100%;
+    //     width: 100%;
+    //     position: absolute;
+    //     top:0;
+    //     left:0;
+    //     z-index:-1;
+    //     background-color: rgba($color-white, .5);
+    //   }
+      
+    //   &:hover::after {
+    //     animation: pulsar .5s cubic-bezier(.97,.34,.78,.36) infinite;
+    //   }
       
     }
     
@@ -91,39 +102,59 @@
       height: 50px;
       transition: all .5s;
   
-      &::before, &::after{
-        content: ' ';
-        position: absolute;
-        height: 50px;
-        width: 2px;
-        background-color: rgba($color-main-one, .8);
-        transition: all .5s;
-        left: 50%;
-      }
+    //   &::before, &::after{
+    //     content: ' ';
+    //     position: absolute;
+    //     height: 50px;
+    //     width: 2px;
+    //     background-color: rgba($color-main-one, .8);
+    //     transition: all .5s;
+    //     left: 50%;
+    //   }
       
-      &::before {
-        transform: rotate(0deg);
-      }
+    //   &::before {
+    //     transform: rotate(0deg);
+    //   }
       
-      &::after {
-        transform: rotate(90deg);
-      }
+    //   &::after {
+    //     transform: rotate(90deg);
+    //   }
+    }
+
+
+    &__dash{
+        position: relative;
+        padding: .5rem;
+        top: 0px;
+        right: 0%;
+        transition: all .2s;
+        
+        background-color: rgba($color-white, .5);
+        // box-shadow: 0 0 10px 0px $color-white;
+        z-index: 100;
     }
     
-    &__nav {
-      position: fixed;
-      top: 50px;
-      opacity: 0;
-      right: -200px;
-      transition: all .2s;
-      background-color: rgba($color-white, .5);
-      box-shadow: 0 0 10px 0px $color-white;
-      z-index: 100;
+    
+    //LISTS STYLE
+    //*********************************************
+    &__league {
+     
     }
     
     &__list {
       list-style: none;
       width: 100%;
+
+      &--league{
+
+      }
+
+      &--league-type{
+        border-top: 1px dashed rgba($color-black, .5);
+
+        display: flex;
+        justify-content: space-around;
+      }
     }
     
     &__item {
@@ -135,7 +166,6 @@
       text-decoration: none;
       text-shadow: 0 0 5px $color-white;
       color: $color-main-two;
-      font-size: 25px;
       padding: 5px 8px;
       transition: all .2s;
       cursor: pointer;
@@ -144,13 +174,33 @@
         transform: scale(1.1);
         color: $color-main-one;
       }
-      
+
+      &--league{
+        font-size: 2.5rem;        
+      }
+
+      &--type{
+        font-size: 1.5rem;
+      }
+
+      &--clicked{
+        color: $color-main-one;
+      }
     }
+
     
-    &__checkbox:checked ~ &__nav {
-      transform: translateX(-350px);
-      opacity: 1;
-    }
+
+    //FUNCTIONALITY
+    //*********************************************
+
+    // &__checkbox:checked + &__button{
+    //     transform: translateX(100%);
+    // }
+
+    // &__checkbox:checked ~ &__dash {
+    //   transform: translateX(100%);
+    //   opacity: 1;
+    // }
     
     &__checkbox:checked + &__button &__icon::before,
     &__checkbox:checked + &__button &__icon::after {
