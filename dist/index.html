@@ -13,36 +13,54 @@
 <body>
 
     <div class="select">
+            <input type="checkbox" class="select__checkbox" id="select-trigger">
+            <label for="select-trigger" class="select__button">
+                <span class="select__icon">&nbsp;<</span>
+            </label>
 
-        <input type="checkbox" class="select__checkbox" id="select-trigger">
-        <label for="select-trigger" class="select__button">
-            <span class="select__icon">&nbsp;</span>
-        </label>
+        <div class="select__dash">
 
-        <div class="select__nav">
-            <ul class="select__list">
-                <li class="select__item">
-                    <div class="select__link select__link--pl" id="2021">Premier League</div>
-                </li>
-                <li class="select__item">
-                    <div class="select__link select__link--pd" id="2014">Primera Division</div>
-                </li>
-                <li class="select__item">
-                    <div class="select__link select__link--sa" id="2019">Serie A</div>
-                </li>
-                <li class="select__item">
-                    <div class="select__link select__link--bl" id="2002">Bundesliga</div>
-                </li>
-                <li class="select__item">
-                    <div class="select__link select__link--l1" id="2015">Ligue 1</div>
-                </li>
-            </ul>
+            <div class="select__league">
+                <ul class="select__list select__list--league">
+                    <li class="select__item">
+                        <div class="select__link select__link--league" id="2021">Premier League</div>
+                    </li>
+                    <li class="select__item">
+                        <div class="select__link select__link--league" id="2014">Primera Division</div>
+                    </li>
+                    <li class="select__item">
+                        <div class="select__link select__link--league" id="2019">Serie A</div>
+                    </li>
+                    <li class="select__item">
+                        <div class="select__link select__link--league" id="2002">Bundesliga</div>
+                    </li>
+                    <li class="select__item">
+                        <div class="select__link select__link--league" id="2015">Ligue 1</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="select__league-type">
+                <ul class="select__list select__list--league-type">
+                    <li class="select__item">
+                        <div class="select__link select__link--type select__link--type--1 select__link--clicked" id="total">Total</div>
+                    </li>
+                    <li class="select__item">
+                        <div class="select__link select__link--type select__link--type--1" id="home">Home</div>
+                    </li>
+                    <li class="select__item">
+                        <div class="select__link select__link--type select__link--type--4" id="away">Away</div>
+                    </li>
+                </ul>
+            </div>
         </div>
 
     </div>
 
 
-
+    <!-- *************************************************************************** -->
+    <!-- HEADER ********************************************************************-->
+    <!-- *************************************************************************** -->
     <header class="header">
         <div class="header__logo-box u_header_position">
             MW4 Dev
@@ -66,12 +84,12 @@
                 <div class="col-65">
                     <div class="u-text-center u-margin-bottom-small u-position-relative">
                         <h3 class="heading-three" id="leagueTitle">League table</h3>
-                        <div class="changeLeague-type">
+                        <!-- <div class="changeLeague-type">
                             <div class="changeLeague-type__button changeLeague-type__button--1 changeLeague-type__button--clicked"
                                 id="total">T</div>
                             <div class="changeLeague-type__button changeLeague-type__button--2" id="home">H</div>
                             <div class="changeLeague-type__button changeLeague-type__button--3" id="away">A</div>
-                        </div>
+                        </div> -->
                     </div>
 
                     <table class="table table__league">
@@ -192,7 +210,6 @@
                         <i class="fas fa-futbol icon icon__for"></i>
                     </div>
                 </div>
-
                 <div class="col-75">
                     <div class="chart-box">
                         <canvas id="chartGoalsForBest" width="400" height="400"></canvas>
@@ -373,5 +390,4 @@
 
 
 <script type="text/javascript" src="js/bundle.js"></script></body>
-
 </html>
