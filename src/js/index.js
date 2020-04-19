@@ -56,6 +56,7 @@ const controlSearch = async (e) => {
         leagueView.clearTable();
         leagueView.clearScorers();
         leagueView.defaultTypeButtons();
+        leagueView.selectLeagueButton(leagueId);
 
 
         //5. RENDER TABLE
@@ -78,30 +79,31 @@ const controlSearch = async (e) => {
 
         //b. GOALS FOR/AGAINST
         //reset input to default value
-        chartsView.resetSlidervalue();
+        // chartsView.resetSlidervalue();
 
-        {
-            //create data chart
-            const chartGoalData = chartsData.formatDataForChartForAgainst(state.league, "goalsForBest", 1, 10);
-            // console.log(chartGoalData);
-            //render chart
-            chartsView.creatChartGoal(chartGoalData, "goalsForBest");
-        }
-        {
-            const chartGoalData = chartsData.formatDataForChartForAgainst(state.league, "goalsForWorst");
-            // console.log(chartGoalData);
-            chartsView.creatChartGoal(chartGoalData, "goalsForWorst");
-        }
-        {
-            const chartGoalData = chartsData.formatDataForChartForAgainst(state.league, "goalsAgainstBest");
-            // console.log(chartGoalData);
-            chartsView.creatChartGoal(chartGoalData, "goalsAgainstBest");
-        }
-        {
-            const chartGoalData = chartsData.formatDataForChartForAgainst(state.league, "goalsAgainstWorst");
-            // console.log(chartGoalData);
-            chartsView.creatChartGoal(chartGoalData, "goalsAgainstWorst");
-        }
+        // {
+        //     //create data chart
+        //     const chartGoalData = chartsData.formatDataForChartForAgainst(state.league, "goalsForBest", 1, 10);
+        //     // console.log(chartGoalData);
+        //     //render chart
+        //     chartsView.creatChartGoal(chartGoalData, "goalsForBest");
+        // }
+        // {
+        //     const chartGoalData = chartsData.formatDataForChartForAgainst(state.league, "goalsForWorst");
+        //     // console.log(chartGoalData);
+        //     chartsView.creatChartGoal(chartGoalData, "goalsForWorst");
+        // }
+        // {
+        //     const chartGoalData = chartsData.formatDataForChartForAgainst(state.league, "goalsAgainstBest");
+        //     // console.log(chartGoalData);
+        //     chartsView.creatChartGoal(chartGoalData, "goalsAgainstBest");
+        // }
+        // {
+        //     const chartGoalData = chartsData.formatDataForChartForAgainst(state.league, "goalsAgainstWorst");
+        //     // console.log(chartGoalData);
+        //     chartsView.creatChartGoal(chartGoalData, "goalsAgainstWorst");
+        // }
+
     } catch (error) {
         console.log(error);
     }
@@ -159,6 +161,8 @@ const chartDiffUpdate = () => {
     chartsView.createChartGoalDiff(chartGoalDiffData);   
 };
 
+
+
 //*********************************************************************************
 //*********************************************************************************
 //CHANGE CHART GOALS BASE ON SLIDER VALUE
@@ -180,6 +184,12 @@ const chartGoalsUpdate = (e) =>{
 
 };
 
+
+//SHOW/HIDE CHART GOALS
+const showHideChartGoals = () => {
+    
+
+};
 
 
 //*********************************************************************************

@@ -111,6 +111,9 @@ export const changeInputMax = (max) =>{
     elements.chartDiffButtonsHigh.setAttribute('max', max);
 };
 
+
+
+
 //*********************************************************************************
 //*********************************************************************************
 //CHART GOLAS FOR/AGAINST

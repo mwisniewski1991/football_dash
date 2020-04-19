@@ -48,6 +48,18 @@ export const defaultTypeButtons = () => {
     elements.tableButtonTotal.classList.add('select__link--clicked');
 };
 
+//AD CLASS TO SELECTED LEAGUE
+export const selectLeagueButton = (id) => {
+
+    Array.from(elements.selectButtons).forEach(el => {
+        el.classList.remove("select__link--clicked"); //remove class from all item
+
+        if (el.id === id){
+            el.classList.add("select__link--clicked"); //add class to selected item 
+        }
+    });
+};
+
 //*********************************************************************************
 //*********************************************************************************
 //SCORERS PART

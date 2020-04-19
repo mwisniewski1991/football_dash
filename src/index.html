@@ -11,22 +11,23 @@
 </head>
 
 <body>
-
     <div class="select">
             <input type="checkbox" class="select__checkbox" id="select-trigger">
             <label for="select-trigger" class="select__button">
-                <span class="select__icon">&nbsp;<</span>
+                <span class="select__icon">
+                
+                </span>
             </label>
 
         <div class="select__dash">
-
+            <h3 class="heading-four">Select Leageu</h3>
             <div class="select__league">
                 <ul class="select__list select__list--league">
                     <li class="select__item">
                         <div class="select__link select__link--league" id="2021">Premier League</div>
                     </li>
                     <li class="select__item">
-                        <div class="select__link select__link--league" id="2014">Primera Division</div>
+                        <div class="select__link select__link--league select__link--clicked" id="2014">Primera Division</div>
                     </li>
                     <li class="select__item">
                         <div class="select__link select__link--league" id="2019">Serie A</div>
@@ -41,6 +42,7 @@
             </div>
 
             <div class="select__league-type">
+                <h3 class="heading-four">Select Type</h3>
                 <ul class="select__list select__list--league-type">
                     <li class="select__item">
                         <div class="select__link select__link--type select__link--type--1 select__link--clicked" id="total">Total</div>
@@ -52,6 +54,30 @@
                         <div class="select__link select__link--type select__link--type--4" id="away">Away</div>
                     </li>
                 </ul>
+            </div>
+
+            <div class="select__showChart">
+                <h3 class="heading-four">Show/hide chart</h3>
+                <div class="select__grid">
+                    <div class="select__gridItem"></div>    
+                    <div class="select__gridItem select__gridItem--menu">GoalsFor</div>    
+                    <div class="select__gridItem select__gridItem--menu">GoalsAgainst</div>    
+                    <div class="select__gridItem select__gridItem--menu">Best</div>    
+                    <div class="select__gridItem select__gridItem--option">
+                        <input class="select__chartBox" type="checkbox" id="goalsForBest">
+                    </div>    
+                    <div class="select__gridItem select__gridItem--option">
+                            <input class="select__chartBox" type="checkbox" id="goalsForWorst">
+                    </div>    
+                    <div class="select__gridItem select__gridItem--menu">Worst</div>    
+                    <div class="select__gridItem select__gridItem--option">
+                        <input class="select__chartBox" type="checkbox" id="goalsAgainstBest">
+
+                    </div>    
+                    <div class="select__gridItem select__gridItem--option">
+                        <input class="select__chartBox" type="checkbox" id="goalsAgainstWorst">
+                    </div>    
+                </div>
             </div>
         </div>
 
@@ -197,8 +223,8 @@
             <!-- *************************************************************************** -->
             <!-- CHARTS GOALS************************************************************* -->
             <!-- *************************************************************************** -->
-            <div class="row">
-
+            <div class="row" id="chartGoalsRow">
+        
                 <div class="col-25 chartGoals-box">
                     <div class="chartGoals-box__details">
                         <h2 class="heading-three u-margin-bottom-small">Goals For
@@ -218,7 +244,7 @@
 
             </div>
 
-            <div class="row">
+            <div class="row chartGoalsRow">
                 <div class="col-25 chartGoals-box">
                     <div class="chartGoals-box__details">
                         <h2 class="heading-three u-margin-bottom-small">Goals For
@@ -237,7 +263,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row chartGoalsRow">
                 <div class="col-25 chartGoals-box">
                     <div class="chartGoals-box__details">
                         <h2 class="heading-three u-margin-bottom-small">Goals Against
@@ -256,7 +282,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row chartGoalsRow">
                 <div class="col-25 chartGoals-box">
                     <div class="chartGoals-box__details">
                         <h2 class="heading-three u-margin-bottom-small">Goals Against
